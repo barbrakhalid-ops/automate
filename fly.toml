@@ -7,14 +7,21 @@ app = 'buza'
 primary_region = 'lhr'
 
 [build]
+dockerfile = "Dockerfile"
+[env]
+PORT = "5678"
 
 [http_service]
-  internal_port = 8080
+  internal_port = 5678
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-  processes = ['app']
+
+[mounts]
+  source = "n8n_data"
+  destination = "/home/node/.n8n"
+
 
 [[vm]]
   memory = '1gb'
