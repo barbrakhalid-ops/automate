@@ -1,0 +1,1 @@
+https://osher.com.au/blog/how-to-host-n8n-on-fly-io/#postdeployment-configuration

@@ -7,9 +7,10 @@ app = 'buza'
 primary_region = 'lhr'
 
 [build]
-dockerfile = "Dockerfile"
+  dockerfile = "Dockerfile"
+
 [env]
-PORT = "5678"
+  PORT = "5678"
 
 [http_service]
   internal_port = 5678
@@ -18,9 +19,12 @@ PORT = "5678"
   auto_start_machines = true
   min_machines_running = 0
 
-[mounts]
+[[mounts]]
   source = "n8n_data"
-  destination = "/home/node/.n8n"
+  destination = '/home/node/.n8n'
+  auto_extend_size_threshold = 80
+  auto_extend_size_increment = "1GB"
+  auto_extend_size_limit = "5GB"
 
 
 [[vm]]
