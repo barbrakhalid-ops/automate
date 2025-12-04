@@ -1,31 +1,34 @@
-# fly.toml app configuration file generated for buza on 2025-12-03T15:45:06Z
+# fly.toml app configuration file generated for buza-small-rain-5638 on 2025-12-04T13:45:05Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'buza'
+app = 'buza-small-rain-5638'
 primary_region = 'lhr'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [env]
-  PORT = "5678"
+  N8N_BASIC_AUTH_PASSWORD = '00n4ceynRaD'
+  N8N_BASIC_AUTH_USER = 'sefu'
+  N8N_ENCRYPTION_KEY = '00n4ceynRaD'
+  N8N_HOST = 'buza.fly.dev'
+  N8N_PORT = '5678'
+  N8N_PROTOCOL = 'https'
+  N8N_RUNNERS_ENABLED = 'true'
+
+[[mounts]]
+  source = 'n8n_data'
+  destination = '/home/node/.n8n'
 
 [http_service]
   internal_port = 5678
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-
-[[mounts]]
-  source = "n8n_data"
-  destination = '/home/node/.n8n'
-  auto_extend_size_threshold = 80
-  auto_extend_size_increment = "1GB"
-  auto_extend_size_limit = "5GB"
-
+  processes = ['app']
 
 [[vm]]
   memory = '1gb'
